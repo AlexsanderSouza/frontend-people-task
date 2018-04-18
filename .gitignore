@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/dist-server
 /tmp
 /out-tsc
 
@@ -18,6 +19,7 @@
 *.sublime-workspace
 
 # IDE - VSCode
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -40,3 +42,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# json-server database
+/src/app/model/db-json-server/db.json
