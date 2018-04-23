@@ -1,3 +1,18 @@
 <p>
 pessoa works!
 </p>
+
+<div class="inputP" >
+<input  placeholder="Nome">
+</div>
+<div class="inputP">
+    <input placeholder="Email">
+    <button>Gravar</button>
+</div>
+
+<table>
+    <tr ng-repeat="x in names">
+      <td>{{ x.nome }}</td>
+      <td>{{ x.email }}</td>
+    </tr>
+  </table>
