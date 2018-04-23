@@ -10,9 +10,9 @@ import { AlocacaoComponent } from './alocacao/alocacao.component';
 const appRoutes: Routes = [
 
   { path: 'tarefa', loadChildren:'app/tarefa/tarefa.module#TarefaModule' },
-  { path: 'pessoa', loadChildren: 'app/pessoa/pessoa.module#PessoaModule' },
+  { path: '', loadChildren: 'app/pessoa/pessoa.module#PessoaModule' },
   { path: 'alocacao', loadChildren: 'app/alocacao/alocacao.module#AlocacaoModule' },
-  { path: '', loadChildren: 'app/home/home.module#HomeModule' },
+  // { path: '', loadChildren: 'app/home/home.module#HomeModule' },
 
 ];
 
