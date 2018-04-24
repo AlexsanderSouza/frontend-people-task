@@ -11,7 +11,7 @@ pessoa works!
 </div>
 
 <table>
-    <tr ng-repeat="x in names">
+    <tr *ngFor="let x of names">
       <td>{{ x.nome }}</td>
       <td>{{ x.email }}</td>
     </tr>
