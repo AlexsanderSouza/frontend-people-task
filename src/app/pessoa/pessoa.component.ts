@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { pessoa } from './pessoas';
+import { pessoa } from './../pessoas';
+
 
 @Component({
   selector: 'app-pessoa',

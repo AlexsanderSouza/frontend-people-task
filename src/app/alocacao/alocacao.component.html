@@ -1,3 +1,6 @@
-<p>
-alocacao works!
-</p>
+
+<div>
+    <select [(ngModel)]="selectedValue">
+        <option *ngFor="let x of pessoa" [ngValue]="x">{{x.nome}}</option>>
+    </select>
+</div>
