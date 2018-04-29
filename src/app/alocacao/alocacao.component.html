@@ -1,6 +1,38 @@
 
 <div>
-    <select [(ngModel)]="selectedValue">
-        <option *ngFor="let x of pessoa" [ngValue]="x">{{x.nome}}</option>>
+    <select   >  <!-- [(ngModel)]="selectedPessoa" -->
+        <option *ngFor="let x of pessoas" [value]="x.nome">{{x.nome}}</option>>
     </select>
+
+    <select  >  <!-- [(ngModel)]="selectedPessoa" -->
+        <option *ngFor="let x of pessoas" [value]="x.nome">{{x.nome}}</option>>
+    </select>
+    <button>Adicionar</button>
 </div>
+
+<div>
+    <Label>Festa de Aniversario do </Label>
+    <div id="list" class="row">
+        <div class="table-responsive col-md-12">
+            <table class="table table-striped" cellspacing="0" cellpadding="0">
+              <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th class="actions">Apagar</th>
+                 </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let x of pessoas">
+                <td>{{ x.nome }}</td>
+                    <td class="actions">
+                        <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
+                        <!-- <a class="btn btn-warning btn-xs" href="edit.html">Editar</a> -->
+                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+             </table>
+         </div>
+     </div> <!-- /#list -->
+</div>
+
