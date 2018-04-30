@@ -7,6 +7,12 @@
     </div>
     
     <div>
+        <p> Periodo de execução
+        <input type="date"> à <input type="date"> <input type="button" value="Gravar">
+        </p>
+    </div>
+
+    <div>
         
     </div>
 
@@ -23,11 +29,11 @@
                  </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let x of pessoas">
-                <td>{{ x.nome }}</td>
-                <td>{{ x.email }}</td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let x of tarefas">
+                <td>{{ x.titulo }}</td>
+                <td>{{ x.descricao }}</td>
+                <td>{{ x.dtIni | date:'d-MM-y' }}</td>
+                <td>{{ x.dtFim | date:'d-MM-y' }}</td>
                     <td class="actions">
                         <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
                         <!-- <a class="btn btn-warning btn-xs" href="edit.html">Editar</a> -->
