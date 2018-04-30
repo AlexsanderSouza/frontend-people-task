@@ -9,11 +9,11 @@ import { pessoa } from './../pessoas';
   styleUrls: ['./pessoa.component.css']
 })
 export class PessoaComponent implements OnInit {
-  names: Array<pessoa>;
+  pessoas: Array<pessoa>;
 
   constructor() {
 
-    this.names = [
+    this.pessoas = [
       {nome: 'Alex', email: 'alex@gmail.com'},
       {nome: 'Geane', email: 'geane@gmail.com'},
   ];
