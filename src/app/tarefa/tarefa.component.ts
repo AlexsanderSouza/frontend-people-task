@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { pessoa } from '../pessoas';
+import { tarefa } from '../tarefas';
 
 @Component({
   selector: 'app-tarefa',
@@ -8,13 +9,14 @@ import { pessoa } from '../pessoas';
   styleUrls: ['./tarefa.component.css']
 })
 export class TarefaComponent implements OnInit {
-  pessoas: Array<pessoa>;
+  tarefas: Array<tarefa>; 
+  dtIni = "2018-11-17";
+  dtFim = "2019-12-15";
 
   constructor() {
 
-    this.pessoas = [
-      {nome: 'Alex', email: 'teste'},
-      {nome: 'Geane', email: 'teste'},
+    this.tarefas = [
+      {titulo: 'Alex', descricao: 'teste', dtIni: new Date(this.dtIni), dtFim: new Date(this.dtFim)},
   ];
 
    }
