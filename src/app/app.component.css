@@ -2,11 +2,7 @@ p {
   font-family: Lato;
 }
 
-#menu ul {
-    padding:0px;
-    margin:0px;
-    background-color:#EDEDED;
-    list-style:none;
-}
-
-#menu ul li { display: inline; }
+a {
+  color: white;
+  text-decoration: none;
+} 

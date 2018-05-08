@@ -1,11 +1,14 @@
-<nav id="menu">
-    <ul>
-        <!-- <li><a routerLink='' >Home</a></li> caso futuramente use-->
-        <li><a routerLink='' >Pessoa</a></li>
-        <li><a routerLink='/tarefa'>Tarefa</a></li>
-        <li><a routerLink='/alocacao'>Alocação</a></li>
-    </ul>
+
+<nav>
+    <div class="nav-wrapper" >
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a routerLink='' >Pessoa</a></li>
+            <li><a routerLink='/tarefa'>Tarefa</a></li>
+            <li><a routerLink='/alocacao'>Alocação</a></li>
+        </ul>
+    </div>
 </nav>
+       
 
 <router-outlet></router-outlet>
 
