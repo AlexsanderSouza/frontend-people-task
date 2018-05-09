@@ -1,23 +1,25 @@
 
-<div class="espaco">
-        <form class="col s12">
-            <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Nome</label>
-            </div>  
-        </form>    
-</div>
-<div>      
-        <form class="col s12">  
-            <div class="input-field col s6">
-              <i class="material-icons prefix">email</i>
-              <input id="icon_telephone" type="email" class="validate">
-              <label for="icon_telephone">Email</label>
-            </div>
-        </form>
-</div>           
+<form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
+    <div class="espaco col s12">
+            
+        <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="icon_prefix" type="text" class="validate" formControlName="nome">
+            <label for="icon_prefix">Nome</label>
+        </div>  
+    
+    </div>
 
+    <div class="col s12">      
+        <div class="input-field col s6">
+            <i class="material-icons prefix">email</i>
+            <input id="icon_telephone" type="email" class="validate" formControlName="email">
+            <label for="icon_telephone">Email</label>
+        </div>
+
+    </div>           
+    <button ng-click="" >Gravar</button>
+</form> 
 
   <div id="list" class="row">
     <div class="table-responsive col-md-12">
@@ -30,7 +32,7 @@
              </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let x of pessoas">
+          <tr *ngFor="let x of pessoas$ | async">
             <td>{{ x.nome }}</td>
             <td>{{ x.email }}</td>
                 <td class="actions">
@@ -43,3 +45,7 @@
          </table>
      </div>
  </div> <!-- /#list -->
+
+ <pre>
+     {{pessoas$ | async | json}}
+ </pre>

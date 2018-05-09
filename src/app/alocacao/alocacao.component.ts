@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectControlValueAccessor } from '@angular/forms';
 
-import { pessoa } from './../pessoas';
+import { Pessoa } from './../pessoa';
 
 @Component({
   selector: 'app-alocacao',
@@ -9,8 +9,8 @@ import { pessoa } from './../pessoas';
   styleUrls: ['./alocacao.component.css']
 })
 export class AlocacaoComponent implements OnInit {
-    pessoas:Array<pessoa>;
-    selectedPessoa:pessoa;
+    pessoas:Array<Pessoa>;
+    selectedPessoa:Pessoa;
   constructor() {
     this.pessoas = [
       {nome: 'Alex', email: 'alex@gmail.com'},
