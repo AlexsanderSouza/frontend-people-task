@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { pessoa } from '../pessoas';
+import { Pessoa } from '../pessoa';
 import { tarefa } from '../tarefas';
 
 @Component({

@@ -1,3 +1,4 @@
+import { PessoasService } from './services/pessoas.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +24,9 @@ import { AppComponent } from './app.component';
   declarations: [
      AppComponent,  
      //HomeComponent,
+  ],
+  providers: [
+    PessoasService,
   ],
   bootstrap:    [ AppComponent ]
 })

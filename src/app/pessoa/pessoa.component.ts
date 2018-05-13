@@ -1,7 +1,10 @@
+import { PessoasService } from './../services/pessoas.service';
+
+import {Observable} from 'rxjs/Observable';
+
+import { Pessoa } from './../pessoa';
 import { Component, OnInit } from '@angular/core';
-
-import { pessoa } from './../pessoas';
-
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-pessoa',
@@ -9,18 +12,29 @@ import { pessoa } from './../pessoas';
   styleUrls: ['./pessoa.component.css']
 })
 export class PessoaComponent implements OnInit {
-  pessoas: Array<pessoa>;
+  _form: FormGroup;
+  pessoas$: Observable<Pessoa[]>;
 
-  constructor() {
+  constructor(private _fb: FormBuilder, private _pessoasService: PessoasService) {
+    this._form = this._fb.group({
+      nome: ['', Validators.required],
+      email: [''],
+    });
 
-    this.pessoas = [
-      {nome: 'Alex', email: 'alex@gmail.com'},
-      {nome: 'Geane', email: 'geane@gmail.com'},
-  ];
-
-   }
+    this.pessoas$ = this._pessoasService.pessoas$.asObservable();
+  }
 
   ngOnInit() {
   }
 
+  AddListaPessoas(){
+  }
+
+  _adicionar() {
+    const pessoa: Pessoa = {
+      ...this._form.value,
+    };
+
+    this._pessoasService.addPessoas(pessoa);
+  }
 }
