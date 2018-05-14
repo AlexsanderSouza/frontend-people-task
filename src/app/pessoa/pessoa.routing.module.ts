@@ -5,7 +5,7 @@ import { PessoaComponent } from './pessoa.component';
 
 const pessoaRoutes = [
 
-  { path: '', component: PessoaComponent }
+  { path:'', component: PessoaComponent }
 
 ];
 

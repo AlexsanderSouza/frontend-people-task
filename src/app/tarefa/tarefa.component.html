@@ -1,21 +1,19 @@
+<form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
 <div class="inputP" >
-    <input  placeholder="Titulo">
+    <input  placeholder="Titulo" formControlName="titulo">
     </div>
     
     <div class="inputP">
-        <textarea name="" id="" cols="30" rows="10" placeholder="Descrição"></textarea>
+        <textarea name="" id="" cols="30" rows="10" placeholder="Descrição" formControlName="descricao"></textarea>
     </div>
     
     <div>
         <p> Periodo de execução
-        <input type="date"> à <input type="date"> <input type="button" value="Gravar">
+        <input type="date" formControlName="dtIni"> à <input type="date" formControlName="dtFim"> 
+        <button>Gravar</button>
         </p>
     </div>
-
-    <div>
-        
-    </div>
-
+</form>
       <div id="list" class="row">
         <div class="table-responsive col-md-12">
             <table class="table table-striped" cellspacing="0" cellpadding="0">
@@ -29,7 +27,7 @@
                  </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let x of tarefas">
+              <tr *ngFor="let x of tarefas$ | async">
                 <td>{{ x.titulo }}</td>
                 <td>{{ x.descricao }}</td>
                 <td>{{ x.dtIni | date:'d-MM-y' }}</td>
@@ -41,8 +39,11 @@
                     </td>
                 </tr>
             </tbody>
-             </table>
+           </table>
          </div>
      </div> <!-- /#list -->
 
+     <pre>
+        {{tarefas$ | async | json}}
+    </pre>
     
