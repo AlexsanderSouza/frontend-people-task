@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +9,7 @@ import { AlocacaoRoutingModule } from './alocacao.routing.module'
 
   imports: [
     CommonModule,
-    AlocacaoRoutingModule,
+    AlocacaoRoutingModule, ReactiveFormsModule
   ],
   declarations: [AlocacaoComponent]  
 

@@ -1,3 +1,4 @@
+import { AlocacaoService } from './services/alocacao.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +31,7 @@ import { PessoasService } from './services/pessoas.service';
      //HomeComponent,
   ],
   providers: [
-    PessoasService,TarefaService,
+    PessoasService,TarefaService,AlocacaoService
   ],
   bootstrap:    [ AppComponent ]
 })

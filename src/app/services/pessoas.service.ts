@@ -20,7 +20,6 @@ export class PessoasService {
 
   addPessoas(pessoa: Pessoa) {
     this._pessoas.push(pessoa);
-
     this.pessoas$.next([...this._pessoas]);
   }
 

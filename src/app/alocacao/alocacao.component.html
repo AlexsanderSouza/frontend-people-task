@@ -1,21 +1,22 @@
+<form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
     <div>
         <div class="ali">
-                <select class="browser-default">
+                <select class="browser-default" formControlName="nomeUsuario">
                   <option value="" disabled selected>Tarefa</option>
-                  <option *ngFor="let x of pessoas" [value]="x.nome">{{x.nome}}</option>
+                  <option *ngFor="let x of alocacao$ | async" [value]="x.nomeUsuario">{{x.nomeUsuario}}</option>
                 </select>
           </div>
           <div class="ali">
-                  <select class="browser-default">
+                  <select class="browser-default" formControlName="tituloTarefa">
                     <option value="" disabled selected>Pessoa</option>
-                    <option *ngFor="let x of pessoas" [value]="x.nome">{{x.nome}}</option>
+                    <option *ngFor="let x of alocacao$ | async" [value]="x.tituloTarefa">{{x.tituloTarefa}}</option>>
                   </select>
           </div>
           <div class="input-field col s2" class="ali" class="but">
             <button class="waves-effect waves-light btn">Gravar</button>
           </div>
     </div>
-        
+</form>     
         <div class="a">
             <div class="row">
                 <div class="input-field col s4">
@@ -35,8 +36,8 @@
               </thead>
             
               <tbody>
-                <tr *ngFor="let x of pessoas">
-                  <td>{{ x.nome }}</td>
+                <tr *ngFor="let x of alocacao$ | async">
+                    <td>{{ x.nomeUsuario }}</td>
                   <td>
                     <a class="btn-floating btn waves-effect waves-light red">
                       <i class="material-icons">delete</i></a>
@@ -45,4 +46,8 @@
               </tbody>
             </table>
         </div>
+
+<pre>
+    {{alocacao$ | async | json}}
+</pre>
 
