@@ -1,8 +1,28 @@
-p {
-  font-family: Lato;
+.tudo{
+  top: 100%;
+  left:100%;
+}
+nav{
+  background-color: #212cc9d0;
 }
 
-a {
-  color: white;
-  text-decoration: none;
-} 
+.btn{
+   background-color: #212cc9d0;
+}
+
+.btn:hover{
+  background-color: #686cafd0;
+}
+
+.btn:focus{
+  background-color: #656568d0;
+}
+.table-button{
+  width: 20px;
+}
+.pos-tabela {
+  margin-top: 50px;
+  margin-left: 5%;
+margin-right: 5%;
+}
+
