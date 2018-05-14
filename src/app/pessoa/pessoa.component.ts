@@ -32,4 +32,8 @@ export class PessoaComponent implements OnInit {
     };
     this._pessoasService.addPessoas(pessoa);
   }
+
+  _remove(pessoa: Pessoa){
+    this._pessoasService.removePessoas(pessoa);
+  }
 }
