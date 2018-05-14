@@ -1,49 +1,65 @@
-<form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
-<div class="inputP" >
-    <input  placeholder="Titulo" formControlName="titulo">
-    </div>
-    
-    <div class="inputP">
-        <textarea name="" id="" cols="30" rows="10" placeholder="Descrição" formControlName="descricao"></textarea>
-    </div>
-    
-    <div>
-        <p> Periodo de execução
-        <input type="date" formControlName="dtIni"> à <input type="date" formControlName="dtFim"> 
-        <button>Gravar</button>
-        </p>
-    </div>
-</form>
-      <div id="list" class="row">
-        <div class="table-responsive col-md-12">
-            <table class="table table-striped" cellspacing="0" cellpadding="0">
+<div class="tudo">
+    <form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
+        <div class="row">
+            <div class="input-field col s4">
+                <input type="text" formControlName="titulo">
+                <label >Título</label>
+            </div>
+        </div>
+        <div>
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea1" class="materialize-textarea" formControlName="descricao"></textarea>
+                      <label for="textarea1">Descrição</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div> 
+            <div class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <i class="material-icons prefix">event</i>
+                            <input type="date" class="validate" formControlName="dtIni">
+                        </div>
+                        <div class="input-field col s2">
+                              <i class="material-icons prefix">event</i>
+                              <input type="date" class="validate" formControlName="dtFim">
+                        </div>
+                        <div class="input-field col s2">
+                            <button class="waves-effect waves-light btn">Gravar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="pos-tabela">
+            <table class="responsive-table" class="highlight">
               <thead>
                 <tr>
-                    <th>Titulo</th>
+                    <th>Título</th>
                     <th>Descrição</th>
                     <th>Inicio</th>
                     <th>Fim</th>
-                    <th class="actions">Apagar</th>
-                 </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let x of tarefas$ | async">
-                <td>{{ x.titulo }}</td>
-                <td>{{ x.descricao }}</td>
-                <td>{{ x.dtIni | date:'d-MM-y' }}</td>
-                <td>{{ x.dtFim | date:'d-MM-y' }}</td>
-                    <td class="actions">
-                        <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
-                        <!-- <a class="btn btn-warning btn-xs" href="edit.html">Editar</a> -->
-                        <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-                    </td>
+                    <th class="table-button">Apagar</th>
                 </tr>
-            </tbody>
-           </table>
-         </div>
-     </div> <!-- /#list -->
-
-     <pre>
-        {{tarefas$ | async | json}}
-    </pre>
-    
+              </thead>
+            
+              <tbody>
+                <tr *ngFor="let x of tarefas$ | async">
+                    <td>{{ x.titulo }}</td>
+                    <td>{{ x.descricao }}</td>
+                    <td>{{ x.dtIni | date:'d-MM-y' }}</td>
+                    <td>{{ x.dtFim | date:'d-MM-y' }}</td>
+                    <td>
+                    <a class="btn-floating btn waves-effect waves-light red">
+                      <i class="material-icons">delete</i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+</div>
