@@ -1,10 +1,9 @@
-import { PessoasService } from './../services/pessoas.service';
-
-import {Observable} from 'rxjs/Observable';
-
-import { Pessoa } from './../pessoa';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { PessoasService } from './../services/pessoas.service';
+import { Pessoa } from './../pessoa';
 
 @Component({
   selector: 'app-pessoa',
@@ -25,9 +24,6 @@ export class PessoaComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  AddListaPessoas(){
   }
 
   _adicionar() {

@@ -1,4 +1,4 @@
-export class tarefa {
+export class Tarefa {
     constructor(
         public titulo?: any,
         public descricao?: any,

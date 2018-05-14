@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import {ReplaySubject} from 'rxjs/ReplaySubject';
 
 import { Pessoa } from './../pessoa';
