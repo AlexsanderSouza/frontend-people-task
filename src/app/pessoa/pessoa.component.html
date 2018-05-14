@@ -1,50 +1,46 @@
-
-<form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
-    <div class="espaco col s12">
-            
-        <div class="input-field col s6">
-            <i class="material-icons prefix">account_circle</i>
-            <input id="icon_prefix" type="text" class="validate" formControlName="nome">
-            <label for="icon_prefix">Nome</label>
-        </div>  
-    
+<div class="tudo">
+    <div class="pos-input">
+      <form [formGroup]="_form" (ngSubmit)="_adicionar()">
+          <div class="col s12">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="icon_prefix" type="text" class="validate" formControlName="nome">
+              <label for="icon_prefix">Nome</label>
+            </div>
+          </div>
+          <div class="col s12">  
+            <div class="input-field col s6">
+              <i class="material-icons prefix">email</i>
+              <input id="icon_email" type="email" class="validate" formControlName="email">
+              <label for="icon_email">Email</label>
+            </div>
+          </div>
+        <div class="pos-button-gravar"><button class="waves-effect waves-light btn">Gravar</button></div>
+      </form>
     </div>
-
-    <div class="col s12">      
-        <div class="input-field col s6">
-            <i class="material-icons prefix">email</i>
-            <input id="icon_telephone" type="email" class="validate" formControlName="email">
-            <label for="icon_telephone">Email</label>
-        </div>
-    </div>           
-    <button> Gravar </button>
-</form> 
-
-  <div id="list" class="row">
-    <div class="table-responsive col-md-12">
-        <table class="table table-striped" cellspacing="0" cellpadding="0">
-          <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th class="actions">Apagar</th>
-             </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let x of pessoas$ | async">
-            <td>{{ x.nome }}</td>
-            <td>{{ x.email }}</td>
-                <td class="actions">
-                    <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
-                    <!-- <a class="btn btn-warning btn-xs" href="edit.html">Editar</a> -->
-                    <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-                </td>
-            </tr>
-        </tbody>
-         </table>
-     </div>
- </div> <!-- /#list -->
-
- <pre>
-     {{pessoas$ | async | json}}
- </pre>
+    
+  
+    <div class="pos-tabela">
+    <table class="responsive-table" class="highlight">
+      <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th class="table-button">Apagar</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <tr *ngFor="let x of pessoas$ | async">
+          <td>{{ x.nome }}</td>
+          <td>{{ x.email }}</td>
+          <td>
+            <a class="btn-floating btn waves-effect waves-light red">
+            <i class="material-icons">delete</i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    
+  </div>

@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
 
+import { MaterializeModule } from 'angular2-materialize';
+
 //import { TarefaModule } from './tarefa/tarefa.module';
 //import { PessoaModule } from './pessoa/pessoa.module';
 //import { AlocacaoModule } from './alocacao/alocacao.module';
@@ -16,6 +18,7 @@ import { PessoasService } from './services/pessoas.service';
   imports:   [
   BrowserModule, 
   FormsModule, 
+  MaterializeModule,
   AppRoutingModule,
   //TarefaModule,
   //PessoaModule,
