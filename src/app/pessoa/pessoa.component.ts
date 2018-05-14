@@ -30,7 +30,6 @@ export class PessoaComponent implements OnInit {
     const pessoa: Pessoa = {
       ...this._form.value,
     };
-
     this._pessoasService.addPessoas(pessoa);
   }
 }

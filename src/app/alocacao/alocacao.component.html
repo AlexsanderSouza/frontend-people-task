@@ -1,14 +1,17 @@
 
+<form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
 <div>
-    <select> 
-        <option *ngFor="let x of pessoas" [value]="x.nome">{{x.nome}}</option>>
+    <select class="form-control" id="Select1" formControlName="nomeUsuario"> 
+        <option *ngFor="let x of alocacao$ | async" [value]="x.nomeUsuario">{{x.nomeUsuario}}</option>>
     </select>
 
-    <select  >  <!-- [(ngModel)]="selectedPessoa" -->
-        <option *ngFor="let x of pessoas" [value]="x.nome">{{x.nome}}</option>>
+    <select  class="form-control" id="Select2" formControlName="tituloTarefa"> 
+        <option *ngFor="let x of alocacao$ | async" [value]="x.tituloTarefa">{{x.tituloTarefa}}</option>>
     </select>
+    
     <button>Adicionar</button>
 </div>
+</form>
 
 <div>
     <Label>Festa de Aniversario do </Label>
@@ -22,8 +25,8 @@
                  </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let x of pessoas">
-                <td>{{ x.nome }}</td>
+              <tr *ngFor="let x of alocacao$ | async">
+                <td>{{ x.nomeUsuario }}</td>
                     <td class="actions">
                         <!-- <a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
                         <!-- <a class="btn btn-warning btn-xs" href="edit.html">Editar</a> -->
@@ -35,4 +38,8 @@
          </div>
      </div> <!-- /#list -->
 </div>
+
+<pre>
+    {{alocacao$ | async | json}}
+</pre>
 
