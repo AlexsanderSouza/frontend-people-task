@@ -6,14 +6,14 @@ import { Injectable } from '@angular/core';
 export class AlocacaoService {
 
   private _alocacoes: Alocacao[] = [
-    {nomeUsuario: 'Alex', tituloTarefa: 'TaskALex'},
-    {nomeUsuario: 'Geane', tituloTarefa: 'TAskGeane'},
+    // {nomeUsuario: 'Alex', tituloTarefa: 'TaskALex'},
+    // {nomeUsuario: 'Geane', tituloTarefa: 'TAskGeane'},
   ];
 
   alocacao$: ReplaySubject<Alocacao[]> = new ReplaySubject<Alocacao[]>(1);
 
   constructor() {
-    this.alocacao$.next(this._alocacoes);
+    // this.alocacao$.next(this._alocacoes); //vamos precisar se for usar um banco com dados existentes
    }
 
    addAlocacao(alocacao: Alocacao){

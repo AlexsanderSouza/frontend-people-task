@@ -22,12 +22,12 @@ export class AlocacaoComponent implements OnInit {
 
   constructor(private _fb: FormBuilder,private _pessoasService: PessoasService, private _tarefaService: TarefaService,private _alocacaoService: AlocacaoService) {
     this._form = this._fb.group({
-      nomeUsuario: [''],
-      tituloTarefa: [''],
+      nome: ['',Validators.required],
+      titulo: ['',Validators.required],
     });
 
-    // this.alocacaoP$ = this._pessoasService.pessoas$.asObservable();
-    // this.alocacaoT$ = this._tarefaService.tarefas$.asObservable();
+    this.alocacaoP$ = this._pessoasService.pessoas$.asObservable();
+    this.alocacaoT$ = this._tarefaService.tarefas$.asObservable();
     this.alocacao$ = this._alocacaoService.alocacao$.asObservable();
 
    }
@@ -39,7 +39,10 @@ export class AlocacaoComponent implements OnInit {
     const alocacao: Alocacao = {
       ...this._form.value,
     };
-this._alocacaoService.addAlocacao(alocacao);
+    if(this.alocacao$){
+      this._alocacaoService.addAlocacao(alocacao);
+    }
+
   }
 
 }
