@@ -36,13 +36,13 @@ export class AlocacaoComponent implements OnInit {
   }
 
   _adicionar(){
+    if(this._form.invalid) {return;}
     const alocacao: Alocacao = {
       ...this._form.value,
     };
-    if(this.alocacao$){
-      this._alocacaoService.addAlocacao(alocacao);
-    }
-
+    this._alocacaoService.addAlocacao(alocacao);
+    this._form.controls.nome.setValue("");
+    this._form.controls.titulo.setValue("");
   }
 
 }
