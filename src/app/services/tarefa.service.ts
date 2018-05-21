@@ -22,4 +22,10 @@ export class TarefaService {
     this.tarefas$.next([...this._tarefas]);
   }
 
+  removeTarefas(tarefa: Tarefa){
+    const index = this._tarefas.indexOf(tarefa);
+    this._tarefas.splice(index, 1);
+    this.tarefas$.next([...this._tarefas]);
+  }
+
 }

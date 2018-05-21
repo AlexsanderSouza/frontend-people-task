@@ -1,8 +1,8 @@
 <div class="tudo">
-    <form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
+    <form [formGroup]="_form" (ngSubmit)="_adicionar()">
         <div class="row">
             <div class="input-field col s4">
-                <input type="text" formControlName="titulo">
+                <input type="text" class="validate" required formControlName="titulo">
                 <label >Título</label>
             </div>
         </div>
@@ -10,7 +10,7 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                      <textarea id="textarea1" class="materialize-textarea" formControlName="descricao"></textarea>
+                      <textarea id="textarea1" class="materialize-textarea validate" required formControlName="descricao"></textarea>
                       <label for="textarea1">Descrição</label>
                     </div>
                 </div>
@@ -22,11 +22,11 @@
                     <div class="row">
                         <div class="input-field col s2">
                             <i class="material-icons prefix">event</i>
-                            <input type="date" class="validate" formControlName="dtIni">
+                            <input type="date" class="validate" required formControlName="dtIni">
                         </div>
                         <div class="input-field col s2">
                               <i class="material-icons prefix">event</i>
-                              <input type="date" class="validate" formControlName="dtFim">
+                              <input type="date" class="validate" required formControlName="dtFim">
                         </div>
                         <div class="input-field col s2">
                             <button class="waves-effect waves-light btn">Gravar</button>
@@ -56,7 +56,7 @@
                     <td>{{ x.dtFim | date:'d-MM-y' }}</td>
                     <td>
                     <a class="btn-floating btn waves-effect waves-light red">
-                      <i class="material-icons">delete</i></a>
+                      <i class="material-icons" (click)="_remove(x)">delete</i></a>
                   </td>
                 </tr>
               </tbody>

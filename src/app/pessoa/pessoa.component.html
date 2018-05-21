@@ -4,18 +4,20 @@
           <div class="col s12">
             <div class="input-field col s6">
               <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate" formControlName="nome">
+              <input id="icon_prefix" type="text" class="validate" required formControlName="nome">
               <label for="icon_prefix">Nome</label>
             </div>
           </div>
           <div class="col s12">  
             <div class="input-field col s6">
               <i class="material-icons prefix">email</i>
-              <input id="icon_email" type="email" class="validate" formControlName="email">
+              <input id="icon_email" type="email" class="validate" required formControlName="email">
               <label for="icon_email">Email</label>
             </div>
           </div>
-        <div class="pos-button-gravar"><button class="waves-effect waves-light btn">Gravar</button></div>
+        <div class="pos-button-gravar">
+          <button class="waves-effect waves-light btn">Gravar</button>
+        </div>
       </form>
     </div>
     

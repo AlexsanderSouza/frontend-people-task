@@ -45,4 +45,8 @@ export class AlocacaoComponent implements OnInit {
     this._form.controls.titulo.setValue("");
   }
 
+  _remove(alocacao: Alocacao){
+    this._alocacaoService.removeAlocacao(alocacao);
+  }
+
 }
