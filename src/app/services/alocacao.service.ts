@@ -21,4 +21,11 @@ export class AlocacaoService {
      this.alocacao$.next([...this._alocacoes]);
    }
 
+   removeAlocacao(alocacao: Alocacao){
+     const index = this._alocacoes.indexOf(alocacao);
+     this._alocacoes.splice(index,1);
+     this.alocacao$.next([...this._alocacoes]);
+   }
+
+
 }

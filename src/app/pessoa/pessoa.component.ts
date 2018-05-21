@@ -16,8 +16,8 @@ export class PessoaComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private _pessoasService: PessoasService) {
     this._form = this._fb.group({
-      nome: ['', Validators.required],
-      email: [''],
+      nome: [null , Validators.required,],
+      email: [null , [Validators.required, Validators.email]],
     });
 
     this.pessoas$ = this._pessoasService.pessoas$.asObservable();
@@ -27,10 +27,12 @@ export class PessoaComponent implements OnInit {
   }
 
   _adicionar() {
+    if(this._form.invalid){return;}
     const pessoa: Pessoa = {
       ...this._form.value,
     };
     this._pessoasService.addPessoas(pessoa);
+    this._form.reset();
   }
 
   _remove(pessoa: Pessoa){

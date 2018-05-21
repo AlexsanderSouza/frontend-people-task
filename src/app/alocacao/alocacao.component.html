@@ -1,4 +1,4 @@
-<form [formGroup]="_form" (ngSubmit)="_adicionar()" novalidate>
+<form [formGroup]="_form" (ngSubmit)="_adicionar()">
     <div>
         <div class="ali">
                 <select class="browser-default" formControlName="titulo">
@@ -17,9 +17,11 @@
           </div>
     </div>
 </form>     
-        <div class="row">
-            
-        </div>
+<div class="but">
+  <div *ngFor="let x of alocacao$ | async">
+    <div>{{x.titulo}}</div>
+  </div>
+</div>  
         
         <div class="pos-tabela ">
             <table class="responsive-table " class="highlight">
@@ -35,7 +37,7 @@
                     <td>{{ x.nome }}</td>
                   <td>
                     <a class="btn-floating btn waves-effect waves-light red">
-                      <i class="material-icons">delete</i></a>
+                      <i class="material-icons" (click)="_remove(x)">delete</i></a>
                   </td>
                 </tr>
               </tbody>
