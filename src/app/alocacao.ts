@@ -1,5 +1,9 @@
+import { Tarefa } from './tarefa';
+import { Pessoa } from "./pessoa";
+
 export class Alocacao {
     constructor(
-      public nomeUsuario?: any,
-      public tituloTarefa?: any) { }
+      public pessoa?: Pessoa,
+      public tarefa?: Tarefa,
+      public id?: number) { }
   }

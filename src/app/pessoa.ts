@@ -1,5 +1,6 @@
 export class Pessoa {
     constructor(
-      public email?: any,
-      public nome?: any) { }
+      public email?: string,
+      public nome?:  string,
+      public id?:    number) { }
   }

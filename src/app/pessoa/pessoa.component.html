@@ -1,26 +1,29 @@
 <div class="tudo">
     <div class="pos-input">
-      <form [formGroup]="_form" (ngSubmit)="_adicionar()">
+      <form [formGroup]="_form" #f="ngForm" >  <!--  #f="ngForm" usado para resetar validação e values do form -->
           <div class="col s12">
             <div class="input-field col s6">
               <i class="material-icons prefix">account_circle</i>
               <input id="icon_prefix" type="text" class="validate" required formControlName="nome">
-              <label for="icon_prefix">Nome</label>
+              <label *ngIf="!_edit" for="icon_prefix" >Nome</label>
+              <label *ngIf="_edit" for="icon_prefix" class="active">Nome</label>
             </div>
           </div>
           <div class="col s12">  
             <div class="input-field col s6">
               <i class="material-icons prefix">email</i>
               <input id="icon_email" type="email" class="validate" required formControlName="email">
-              <label for="icon_email">Email</label>
+              <label *ngIf="!_edit" for="icon_email">Email</label>
+              <label *ngIf="_edit" for="icon_email" class="active">Email</label>
             </div>
           </div>
-        <div class="pos-button-gravar">
-          <button class="waves-effect waves-light btn">Gravar</button>
-        </div>
+          <div class="row">
+              <button *ngIf="_edit" class="waves-effect waves-light btn" (click)="_adicionar(f)">Gravar Edição</button>
+              <button *ngIf="_edit" class="waves-effect waves-light btn red" (click)="_edit = false; f.resetForm()">Cancelar</button>
+              <button *ngIf="!_edit" class="waves-effect waves-light btn" (click)="_adicionar(f)">Gravar</button>
+          </div>
       </form>
     </div>
-    
   
     <div class="pos-tabela">
     <table class="responsive-table" class="highlight">
@@ -28,14 +31,19 @@
         <tr>
             <th>Nome</th>
             <th>Email</th>
+            <th class="table-button" >Editar</th>
             <th class="table-button">Apagar</th>
         </tr>
       </thead>
     
       <tbody>
         <tr *ngFor="let x of pessoas$ | async">
-          <td>{{ x.nome }}</td>
-          <td>{{ x.email }}</td>
+          <td >{{ x.nome }}</td>
+          <td >{{ x.email }}</td>
+          <td>
+            <a class="btn-floating btn waves-effect waves-light red">
+            <i class="material-icons" (click)="_editar(x)" >edit</i></a>
+          </td>
           <td>
             <a class="btn-floating btn waves-effect waves-light red">
             <i class="material-icons" (click)="_remove(x)">delete</i></a>
