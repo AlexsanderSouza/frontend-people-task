@@ -4,13 +4,14 @@
     width:500px;
     height:auto;
     margin-left:-250px;
-    }
+}
     
-    .pos-button-gravar{
+.pos-button-gravar{
     position: relative;
     left:100%;
     margin-left: -120px;
-    }
-    .table-button{
-        width: 6%;
-      }
+}
+
+.table-button{
+    width: 6%;
+}

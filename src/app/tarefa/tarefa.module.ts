@@ -2,9 +2,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TarefaComponent } from './tarefa.component';
 import { TarefaRoutingModule } from './tarefa.routing.module';
 
+import { TarefaComponent } from './tarefa.component';
 
 @NgModule({
   imports: [

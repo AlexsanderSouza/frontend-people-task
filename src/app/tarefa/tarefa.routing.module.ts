@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { TarefaComponent } from './tarefa.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 const tarefaRoutes = [
 

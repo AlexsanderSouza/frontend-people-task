@@ -1,8 +1,10 @@
-import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 
+import { Observable } from 'rxjs/Observable';
+
 import { PessoasService } from './../services/pessoas.service';
+
 import { Pessoa } from './../pessoa';
 
 @Component({

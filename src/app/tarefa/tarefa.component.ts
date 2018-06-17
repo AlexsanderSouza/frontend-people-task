@@ -1,9 +1,13 @@
-import { Tarefa } from '../tarefa';
-import { TarefaService } from './../services/tarefa.service';
-import { Observable } from 'rxjs/Observable';
-
 import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+
+import { TarefaService } from './../services/tarefa.service';
+
+import { Tarefa } from '../tarefa';
+
+
 
 @Component({
   selector: 'app-tarefa',
