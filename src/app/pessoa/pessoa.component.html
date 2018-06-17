@@ -19,7 +19,7 @@
           </div>
           <div class="row">
               <button *ngIf="_edit" class="waves-effect waves-light btn" (click)="_adicionar(f)">Gravar Edição</button>
-              <button *ngIf="_edit" class="waves-effect waves-light btn red" (click)="_edit = false; f.resetForm()">Cancelar</button>
+              <button *ngIf="_edit" class="waves-effect waves-light btn red" (click)="_cancelar(f)">Cancelar</button>
               <button *ngIf="!_edit" class="waves-effect waves-light btn" (click)="_adicionar(f)">Gravar</button>
           </div>
       </form>

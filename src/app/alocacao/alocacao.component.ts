@@ -17,7 +17,9 @@ import { Alocacao } from './../alocacao';
   styleUrls: ['./alocacao.component.css']
 })
 export class AlocacaoComponent implements OnInit {
+  //controla o formulario do html
   _form: FormGroup;
+
   alocacaoP$: Observable<Pessoa[]>;
   alocacaoT$: Observable<Tarefa[]>;
   alocacao$: Observable<Alocacao[]>;
@@ -38,7 +40,7 @@ export class AlocacaoComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  //explode os valores do form e adiciona para o tipo alocacao
   _adicionar() {
     if (this._form.invalid) { return; }
     const alocacao: Alocacao = {
@@ -49,12 +51,11 @@ export class AlocacaoComponent implements OnInit {
     this._form.controls.pessoa.setValue("");
     this._form.controls.tarefa.setValue("");
   }
-
+  //chama a função de remover do service
   _remove(alocacao: Alocacao) {
     this._alocacaoService.removeAlocacao(alocacao);
   }
-
-
+  // obtem as pessoas a serem inclusas na tabela devido a seleção de tarefa
   getPessoas() {
     this._alocacaoService.obtemTodasAsAlocacao(this._form.controls.tarefa.value.id);
     this.alocacao$ = this._alocacaoService.alocacao$.asObservable();
