@@ -4,7 +4,7 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { PessoaComponent } from './pessoa/pessoa.component';
 import { TarefaComponent } from './tarefa/tarefa.component';
-import { HomeComponent } from './home/home.component';
+//import { HomeComponent } from './home/home.component';
 import { AlocacaoComponent } from './alocacao/alocacao.component';
 
 const appRoutes: Routes = [

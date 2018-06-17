@@ -22,31 +22,39 @@ export class AlocacaoComponent implements OnInit {
 
   constructor(private _fb: FormBuilder,private _pessoasService: PessoasService, private _tarefaService: TarefaService,private _alocacaoService: AlocacaoService) {
     this._form = this._fb.group({
-      nome: ['',Validators.required],
-      titulo: ['',Validators.required],
+      pessoa: ["",Validators.required],
+      tarefa: ["",Validators.required],
     });
 
     this.alocacaoP$ = this._pessoasService.pessoas$.asObservable();
     this.alocacaoT$ = this._tarefaService.tarefas$.asObservable();
-    this.alocacao$ = this._alocacaoService.alocacao$.asObservable();
+    this.alocacao$ = null;
+    this._form.controls.tarefa.setValue("");
 
    }
 
   ngOnInit() {
+
   }
 
   _adicionar(){
     if(this._form.invalid) {return;}
     const alocacao: Alocacao = {
-      ...this._form.value,
+      ...this._form.value,  //... explodindo o objeto
     };
     this._alocacaoService.addAlocacao(alocacao);
-    this._form.controls.nome.setValue("");
-    this._form.controls.titulo.setValue("");
+    this._form.reset();
+    this._form.controls.pessoa.setValue("");
+    this._form.controls.tarefa.setValue("");
   }
 
   _remove(alocacao: Alocacao){
     this._alocacaoService.removeAlocacao(alocacao);
   }
 
+
+  getPessoas(){
+    this._alocacaoService.obtemTodasAsAlocacao(this._form.controls.tarefa.value.id);
+    this.alocacao$ = this._alocacaoService.alocacao$.asObservable();
+  }
 }

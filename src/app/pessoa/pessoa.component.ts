@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 
 import { PessoasService } from './../services/pessoas.service';
 import { Pessoa } from './../pessoa';
@@ -13,26 +13,37 @@ import { Pessoa } from './../pessoa';
 export class PessoaComponent implements OnInit {
   _form: FormGroup;
   pessoas$: Observable<Pessoa[]>;
+  _edit: boolean = false;
 
   constructor(private _fb: FormBuilder, private _pessoasService: PessoasService) {
     this._form = this._fb.group({
+      id: [null ],
       nome: [null , Validators.required,],
       email: [null , [Validators.required, Validators.email]],
     });
 
     this.pessoas$ = this._pessoasService.pessoas$.asObservable();
+    
   }
 
   ngOnInit() {
   }
 
-  _adicionar() {
+  _adicionar(form: FormGroupDirective) {
     if(this._form.invalid){return;}
     const pessoa: Pessoa = {
       ...this._form.value,
     };
     this._pessoasService.addPessoas(pessoa);
-    this._form.reset();
+    form.resetForm();
+    this._edit=false;
+  }
+
+  _editar(pessoa: Pessoa){
+    this._edit = true;
+    this._form.controls['id'].setValue(pessoa.id);
+    this._form.controls['nome'].setValue(pessoa.nome);
+    this._form.controls['email'].setValue(pessoa.email);
   }
 
   _remove(pessoa: Pessoa){

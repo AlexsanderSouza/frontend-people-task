@@ -1,9 +1,10 @@
 <div class="tudo">
-    <form [formGroup]="_form" (ngSubmit)="_adicionar()">
+    <form [formGroup]="_form" #f="ngForm" >
         <div class="row">
             <div class="input-field col s4">
                 <input type="text" class="validate" required formControlName="titulo">
-                <label >Título</label>
+                <label *ngIf="_edit" class="active" >Título</label>
+                <label *ngIf="!_edit" >Título</label>
             </div>
         </div>
         <div>
@@ -11,7 +12,8 @@
                 <div class="row">
                     <div class="input-field col s12">
                       <textarea id="textarea1" class="materialize-textarea validate" required formControlName="descricao"></textarea>
-                      <label for="textarea1">Descrição</label>
+                      <label *ngIf="_edit" class="active" for="textarea1">Descrição</label>
+                      <label *ngIf="!_edit" for="textarea1">Descrição</label>
                     </div>
                 </div>
             </div>
@@ -28,8 +30,10 @@
                               <i class="material-icons prefix">event</i>
                               <input type="date" class="validate" required formControlName="dtFim">
                         </div>
-                        <div class="input-field col s2">
-                            <button class="waves-effect waves-light btn">Gravar</button>
+                        <div class="row">
+                            <button *ngIf="_edit" class="waves-effect waves-light btn" (click)="_adicionar(f)">Gravar Edição</button>
+                            <button *ngIf="_edit" class="waves-effect waves-light btn red" (click)="_edit = false; f.resetForm()">Cancelar</button>
+                            <button *ngIf="!_edit" class="waves-effect waves-light btn" (click)="_adicionar(f)">Gravar</button>
                         </div>
                     </div>
                 </div>
@@ -44,6 +48,7 @@
                     <th>Descrição</th>
                     <th>Inicio</th>
                     <th>Fim</th>
+                    <th class="table-button">Editar</th>
                     <th class="table-button">Apagar</th>
                 </tr>
               </thead>
@@ -52,9 +57,13 @@
                 <tr *ngFor="let x of tarefas$ | async">
                     <td>{{ x.titulo }}</td>
                     <td>{{ x.descricao }}</td>
-                    <td>{{ x.dtIni | date:'d-MM-y' }}</td>
-                    <td>{{ x.dtFim | date:'d-MM-y' }}</td>
+                    <td>{{ x.dtIni | date:'d/MM/y' }}</td>
+                    <td>{{ x.dtFim | date:'d/MM/y' }}</td>
                     <td>
+                    <a class="btn-floating btn waves-effect waves-light red">
+                      <i class="material-icons" (click)="_editar(x)">edit</i></a>
+                  </td>
+                  <td>
                     <a class="btn-floating btn waves-effect waves-light red">
                       <i class="material-icons" (click)="_remove(x)">delete</i></a>
                   </td>

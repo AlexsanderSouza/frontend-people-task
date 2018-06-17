@@ -1,15 +1,16 @@
 <form [formGroup]="_form" (ngSubmit)="_adicionar()">
     <div>
         <div class="ali">
-                <select class="browser-default" formControlName="titulo">
+                <select class="browser-default" formControlName="tarefa" (click)="getPessoas()">
                   <option value="" disabled selected>Tarefa</option>
-                  <option *ngFor="let x of alocacaoT$ | async" [value]="x.titulo">{{x.titulo}}</option>>
+                  <option *ngFor="let x of alocacaoT$ | async" [ngValue]="x">{{x.titulo}}</option>>
                 </select>
           </div>
+          
           <div class="ali">
-            <select class="browser-default" formControlName="nome">
+            <select class="browser-default" formControlName="pessoa">
               <option value="" disabled selected>Pessoa</option>
-              <option *ngFor="let x of alocacaoP$ | async" [value]="x.nome">{{x.nome}}</option>
+              <option *ngFor="let x of alocacaoP$ | async" [ngValue]="x">{{x.nome}}</option>
             </select>
           </div>
           <div class="input-field col s2" class="ali" class="but">
@@ -17,11 +18,8 @@
           </div>
     </div>
 </form>     
-<div class="but">
-  <div *ngFor="let x of alocacao$ | async">
-    <div>{{x.titulo}}</div>
-  </div>
-</div>  
+
+<p>Você selecionou a tarefa: {{ _form.value['tarefa'].titulo }}</p>
         
         <div class="pos-tabela ">
             <table class="responsive-table " class="highlight">
@@ -34,7 +32,7 @@
             
               <tbody>
                 <tr *ngFor="let x of alocacao$ | async">
-                    <td>{{ x.nome }}</td>
+                    <td>{{ x.pessoa.nome }}</td>
                   <td>
                     <a class="btn-floating btn waves-effect waves-light red">
                       <i class="material-icons" (click)="_remove(x)">delete</i></a>
