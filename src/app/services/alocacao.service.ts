@@ -27,6 +27,7 @@ export class AlocacaoService {
       });
 
   }
+
   /** obtém todos os objetos Alocacao a partir do id de uma tarefa */
   obtemTodasAsAlocacao(tarefaID) {
     if (tarefaID == null || tarefaID == undefined) return;
@@ -38,6 +39,7 @@ export class AlocacaoService {
         this.alocacao$.next(al);
       });
   }
+  
   /** grava as alocações no banco */
   addAlocacao(a: Alocacao): void {
     const url = URL.baseUrl + URL.alocacaoSave_POST;

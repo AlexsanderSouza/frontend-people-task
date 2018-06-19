@@ -7,7 +7,7 @@ import { TarefaComponent } from './tarefa.component';
 const tarefaRoutes = [
 
   { path: '', component: TarefaComponent }
-
+  
 ];
 
 @NgModule({

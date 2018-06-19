@@ -9,12 +9,14 @@ import * as URL from './url';
 
 @Injectable()
 export class TarefaService {
+
   /** emite sempre que o servidor envia todas as Tarefas */
   tarefas$: ReplaySubject<Tarefa[]> = new ReplaySubject<Tarefa[]>(1);
 
   constructor(private _http: HttpClient) {
     this.obtemTodasAsTarefas();
   }
+
   /** remove uma tarefa do banco a partir de um id de tarefa e atualiza o front */
   removeTarefas(tarefa: Tarefa) {
     // removendo da tabela por index comentario para conhecimento
@@ -30,6 +32,7 @@ export class TarefaService {
         this.obtemTodasAsTarefas();
       });
   }
+
   /** obtem todas as tarefas existente no banco de dados */
   obtemTodasAsTarefas() {
     const url = URL.baseUrl + URL.tarefaObtemTodas_GET;
@@ -40,6 +43,7 @@ export class TarefaService {
         this.tarefas$.next(ps);
       });
   }
+  
   /**grava uma tarefa no banco de dados */
   addTarefas(t: Tarefa): void {
     const url = URL.baseUrl + URL.tarefaSave_POST;

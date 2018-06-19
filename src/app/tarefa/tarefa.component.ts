@@ -14,11 +14,13 @@ import { Tarefa } from '../tarefa';
   templateUrl: './tarefa.component.html',
   styleUrls: ['./tarefa.component.css']
 })
-export class TarefaComponent implements OnInit {
+export class TarefaComponent {
   /** controla o formulario do html */
   _form: FormGroup;
+
   /** recebe um Observable com todas as tarefas atualizadas */
   tarefas$: Observable<Tarefa[]>;
+  
   /** controla a visualização de botões de gravar e edição */
   _edit: boolean = false;
 
@@ -34,8 +36,6 @@ export class TarefaComponent implements OnInit {
     this.tarefas$ = this._tarefaService.tarefas$.asObservable();
   }
 
-  ngOnInit() {
-  }
   /** explode os valores do form e adiciona para o tipo tarefa */
   _adicionar(form: FormGroupDirective) {
     if (this._form.invalid) { return; }
@@ -46,6 +46,7 @@ export class TarefaComponent implements OnInit {
     form.resetForm();
     this._edit = false;
   }
+
   /** edita o dado selecionado na tabela */
   _editar(tarefa: Tarefa) {
     this._edit = true;
@@ -55,10 +56,12 @@ export class TarefaComponent implements OnInit {
     this._form.controls['dtIni'].setValue(tarefa.dtIni);
     this._form.controls['dtFim'].setValue(tarefa.dtFim);
   }
+
   /** chama a função de remover do service */
   _remove(tarefa: Tarefa) {
     this._tarefaService.removeTarefas(tarefa);
   }
+
   /** cancela uma edição do dado selecionado para edição */
   _cancelar(f: FormGroupDirective) {
     this._edit = false;

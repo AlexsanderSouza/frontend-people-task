@@ -12,11 +12,14 @@ import { Pessoa } from './../pessoa';
   templateUrl: './pessoa.component.html',
   styleUrls: ['./pessoa.component.css']
 })
-export class PessoaComponent implements OnInit {
+export class PessoaComponent {
+  
   /** controla o formulario do html */
   _form: FormGroup;
+
   /** recebe um Observable com todas as pessoas atualizadas */
   pessoas$: Observable<Pessoa[]>;
+
   /** controla a visualização de botões de gravar e edição */
   _edit: boolean = false;
 
@@ -31,8 +34,6 @@ export class PessoaComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-  }
   /** explode os valores do form e adiciona para o tipo pessoa */
   _adicionar(form: FormGroupDirective) {
     if (this._form.invalid) { return; }
@@ -43,6 +44,7 @@ export class PessoaComponent implements OnInit {
     form.resetForm();
     this._edit = false;
   }
+
   /** edita o dado selecionado na tabela */
   _editar(pessoa: Pessoa) {
     this._edit = true;
@@ -50,10 +52,12 @@ export class PessoaComponent implements OnInit {
     this._form.controls['nome'].setValue(pessoa.nome);
     this._form.controls['email'].setValue(pessoa.email);
   }
+
   /** chama a função de remover do service */
   _remove(pessoa: Pessoa) {
     this._pessoasService.removePessoas(pessoa);
   }
+
   /** cancela uma edição do dado selecionado para edição */
   _cancelar(f: FormGroupDirective) {
     this._edit = false;
