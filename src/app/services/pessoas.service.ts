@@ -11,13 +11,13 @@ import * as URL from './url';
 
 @Injectable()
 export class PessoasService {
-
+  /** emite sempre que o servidor envia todas as pessoas */
   pessoas$: ReplaySubject<Pessoa[]> = new ReplaySubject<Pessoa[]>(1);
 
   constructor(private _http: HttpClient) {
     this.obtemTodasAsPessoas();
   }
-  // remove uma pessoa do banco a partir de um id de pessoa e atualiza o front
+  /** remove uma pessoa do banco a partir de um id de pessoa e atualiza o front */
   removePessoas(p2: Pessoa) {
     const url = URL.baseUrl + URL.pessoaDelete;
     const x = new HttpParams().set('params', p2.id.toString());
@@ -28,7 +28,7 @@ export class PessoasService {
         this.obtemTodasAsPessoas();
       });
   }
-  // obtem todas as pessoas do banco de dados
+  /** obtem todas as pessoas do banco de dados */
   obtemTodasAsPessoas() {
     const url = URL.baseUrl + URL.pessoaObtemTodas_GET;
 
@@ -38,7 +38,7 @@ export class PessoasService {
         this.pessoas$.next(ps);
       });
   }
-  //grava uma pessoa no banco de dados e atualiza o front usando pipe
+  /**grava uma pessoa no banco de dados e atualiza o front usando pipe */
   addPessoas(p: Pessoa): void {
     const url = URL.baseUrl + URL.pessoaSave_POST;
     this._http

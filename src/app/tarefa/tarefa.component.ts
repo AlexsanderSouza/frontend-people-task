@@ -15,12 +15,11 @@ import { Tarefa } from '../tarefa';
   styleUrls: ['./tarefa.component.css']
 })
 export class TarefaComponent implements OnInit {
-  //controla o formulario do html
+  /** controla o formulario do html */
   _form: FormGroup;
-
+  /** recebe um Observable com todas as tarefas atualizadas */
   tarefas$: Observable<Tarefa[]>;
-
-  //controla a visualização de botões de gravar e edição
+  /** controla a visualização de botões de gravar e edição */
   _edit: boolean = false;
 
   constructor(private fb: FormBuilder, private _tarefaService: TarefaService) {
@@ -37,7 +36,7 @@ export class TarefaComponent implements OnInit {
 
   ngOnInit() {
   }
-  //explode os valores do form e adiciona para o tipo tarefa
+  /** explode os valores do form e adiciona para o tipo tarefa */
   _adicionar(form: FormGroupDirective) {
     if (this._form.invalid) { return; }
     const tarefa: Tarefa = {
@@ -47,7 +46,7 @@ export class TarefaComponent implements OnInit {
     form.resetForm();
     this._edit = false;
   }
-  //edita o dado selecionado na tabela
+  /** edita o dado selecionado na tabela */
   _editar(tarefa: Tarefa) {
     this._edit = true;
     this._form.controls['id'].setValue(tarefa.id);
@@ -56,11 +55,11 @@ export class TarefaComponent implements OnInit {
     this._form.controls['dtIni'].setValue(tarefa.dtIni);
     this._form.controls['dtFim'].setValue(tarefa.dtFim);
   }
-  //chama a função de remover do service
+  /** chama a função de remover do service */
   _remove(tarefa: Tarefa) {
     this._tarefaService.removeTarefas(tarefa);
   }
-  //cancela uma edição do dado selecionado para edição
+  /** cancela uma edição do dado selecionado para edição */
   _cancelar(f: FormGroupDirective) {
     this._edit = false;
     f.resetForm();

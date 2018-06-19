@@ -8,13 +8,14 @@ import * as URL from './url';
 
 @Injectable()
 export class AlocacaoService {
-
+  
+  //** emite sempre que o servidor envia todas as alocações */
   alocacao$: ReplaySubject<Alocacao[]> = new ReplaySubject<Alocacao[]>(1);
 
   constructor(private _http: HttpClient) {
   }
 
-  // remove uma alocacao do banco a partir de um id de tarefa e atualiza o front
+  /** remove uma alocacao do banco a partir de um id de tarefa e atualiza o front */
   removeAlocacao(alocacao: Alocacao) {
     const url = URL.baseUrl + URL.alocacaoDelete;
     const x = new HttpParams().set('params', alocacao.id.toString());
@@ -26,7 +27,7 @@ export class AlocacaoService {
       });
 
   }
-  // obtém todos os objetos Alocacao a partir do id de uma tarefa
+  /** obtém todos os objetos Alocacao a partir do id de uma tarefa */
   obtemTodasAsAlocacao(tarefaID) {
     if (tarefaID == null || tarefaID == undefined) return;
     const url = URL.baseUrl + URL.PessoaByTarefa_GET + tarefaID;
@@ -37,7 +38,7 @@ export class AlocacaoService {
         this.alocacao$.next(al);
       });
   }
-  // grava as alocações no banco 
+  /** grava as alocações no banco */
   addAlocacao(a: Alocacao): void {
     const url = URL.baseUrl + URL.alocacaoSave_POST;
     this._http
